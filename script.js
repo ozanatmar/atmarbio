@@ -148,4 +148,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
     benefitCards.forEach(card => observer.observe(card));
   }
+
+  // ====================
+  // CONTACT FORM LOGIC
+  // ====================
+  const contactForm = document.querySelector('.contact__form');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const payload = {};
+
+      for (let [key, value] of formData.entries()) {
+        payload[key] = value;
+      }
+
+      fetch('https://hook.eu2.make.com/m5nbq1lwg2up34kcb7mys99x76mw0zin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(res => {
+          if (res.ok) {
+            alert('Your message has been sent!');
+            contactForm.reset();
+          } else {
+            alert('Submission failed. Please try again.');
+          }
+        })
+        .catch(err => {
+          console.error('Webhook Error:', err);
+          alert('Error sending data.');
+        });
+    });
+  }
 });
