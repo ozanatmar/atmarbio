@@ -113,24 +113,51 @@ document.addEventListener('DOMContentLoaded', function () {
   if (popupForm) {
     popupForm.addEventListener('submit', function (e) {
       e.preventDefault();
-
+  
       const formData = new FormData(popupForm);
       formData.append('category', selectedCategory);
-
+  
       const selectedFlavours = Array.from(document.querySelectorAll('.flavour-item.selected'))
         .map(el => el.textContent.trim())
         .join(', ');
       formData.append('flavours', selectedFlavours);
-
-      fetch('sendmail.php', {
+  
+      const payload = {};
+      for (let [key, value] of formData.entries()) {
+        payload[key] = value;
+      }
+  
+      fetch('https://hook.eu2.make.com/m5nbq1lwg2up34kcb7mys99x76mw0zin?contactForm=popupPetfoodForm', {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
       })
-        .then(res => res.ok ? alert('Thank you for your message!') : alert('Submission failed.'))
-        .then(() => popupOverlay?.classList.add('hidden'))
-        .catch(err => alert('Error: ' + err));
+        .then(res => {
+          if (res.ok) {
+            alert('Thank you for your message!');
+            popupForm.reset();
+            popupOverlay?.classList.add('hidden');
+            document.querySelectorAll('.flavour-item.selected').forEach(el => el.classList.remove('selected'));
+            categoryCards.forEach(c => c.classList.remove('selected'));
+            selectedCategory = "";
+            selectedCount = 0;
+            if (button) {
+              button.disabled = true;
+              button.classList.remove('active');
+            }
+          } else {
+            alert('Submission failed. Please try again.');
+          }
+        })
+        .catch(err => {
+          console.error('Webhook Error:', err);
+          alert('Error sending data.');
+        });
     });
   }
+
 
   // ====================
   // BENEFIT CARDS ANIMATION
