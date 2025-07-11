@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // PETFOOD PAGE LOGIC
   // ====================
   const categoryCards = document.querySelectorAll('.usage-card');
-  const itemsWrapper = document.querySelector('.flavour-wrapper');
+  const flavourItems = document.querySelectorAll('.flavour-item');
   const button = document.querySelector('.send-button');
   const popupOverlay = document.querySelector('.popup-overlay');
   const popupForm = document.getElementById('popupForm');
@@ -39,25 +39,18 @@ document.addEventListener('DOMContentLoaded', function () {
   let selectedCount = 0;
 
   // ✅ Category Selection
-  const categoryWrapper = document.querySelector('.category-wrapper');
-  if (categoryWrapper) {
-    categoryWrapper.addEventListener('click', e => {
-      const card = e.target.closest('.usage-card');
-      if (!card) return;
-
+  categoryCards.forEach(card => {
+    card.addEventListener('click', () => {
       categoryCards.forEach(c => c.classList.remove('selected'));
       card.classList.add('selected');
 
       selectedCategory = card.getAttribute('data-name') || "";
     });
-  }
+  });
 
-  // ✅ Flavour Selection (Event Delegation)
-  if (itemsWrapper) {
-    itemsWrapper.addEventListener('click', e => {
-      const item = e.target.closest('.flavour-item');
-      if (!item) return;
-
+  // ✅ Flavour Selection
+  flavourItems.forEach(item => {
+    item.addEventListener('click', () => {
       if (item.classList.contains('selected')) {
         item.classList.remove('selected');
         selectedCount--;
@@ -75,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         button.classList.toggle('active', selectedCount > 0);
       }
     });
-  }
+  });
 
   // ✅ Show Popup on Send
   if (button) {
