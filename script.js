@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
         payload[key] = value;
       }
 
-      fetch('https://hook.eu2.make.com/m5nbq1lwg2up34kcb7mys99x76mw0zin', {
+      fetch('https://hook.eu2.make.com/m5nbq1lwg2up34kcb7mys99x76mw0zin?contactForm=indexContactForm', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
