@@ -100,6 +100,10 @@ body {
   cursor: pointer;
   transition: background 0.2s ease, transform 0.1s ease;
 }
+a.sidebar__item {
+  text-decoration: none;
+  color: inherit;
+}
 .sidebar__item:hover {
   background: var(--light-grey);
   transform: scale(1.02);
@@ -136,6 +140,11 @@ body {
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.1s ease;
+}
+.sidebar__products li a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 .sidebar__products li:hover {
   background: var(--light-grey);
@@ -1642,16 +1651,17 @@ html {
   font-family: Inter, sans-serif;
   font-weight: 400;
   font-size: 14px;
-  color: #4A4387;
-  margin-bottom: 16px;
+  color: #87888A;
+  margin-bottom: 32px;
 }
 
 .popup-section h4 {
   font-family: Libre Baskerville, serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   color: #99AF61;
   margin-bottom: 8px;
+  margin-top: 32px;
 }
 
 .popup-selected, .popup-flavours span {
