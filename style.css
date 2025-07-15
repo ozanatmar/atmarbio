@@ -1440,7 +1440,6 @@ html {
   color: #6B7280;
   font-size: 14px;
   font-family: 'Inter', sans-serif;
-  font-weight: 400;
   margin-bottom: 24px;
   animation: subtleMove 2s ease-in-out infinite alternate;
 }
