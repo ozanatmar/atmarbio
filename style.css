@@ -22,6 +22,7 @@ body {
   border-bottom: 1px solid var(--light-grey);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: relative; /* stacking context yaratır */
+  margin-bottom: 10px;
 }
 
 .nav__container {
@@ -1721,5 +1722,6 @@ html {
 .hidden {
   display: none;
 }
+
 
 
