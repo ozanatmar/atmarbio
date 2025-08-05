@@ -1499,7 +1499,7 @@ html {
   flex-direction: column;
   align-items: center;
   gap: 24px; /* increased for better breathing */
-  max-width: 900px;
+/*   max-width: 900px; */
   margin: 0 auto; /* center the whole block */
 }
 
@@ -1722,6 +1722,7 @@ html {
 .hidden {
   display: none;
 }
+
 
 
 
