@@ -161,7 +161,7 @@ a.sidebar__item {
   font-family: 'Libre Baskerville', serif;
   font-size: 32px;
   line-height: 48px;
-  color: var(--primary-dark-purple);
+  color: #19162D;
   margin-bottom: 16px;
 }
 
@@ -183,7 +183,7 @@ a.sidebar__item {
   font-size: 14px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  color: #4A4387;
+  color: #19162D;
 }
 
 .hero__features li {
@@ -1721,3 +1721,4 @@ html {
 .hidden {
   display: none;
 }
+
